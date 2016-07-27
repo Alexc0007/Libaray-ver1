@@ -27,4 +27,19 @@ public class RBNode
 		this.parent = parent;
 		this.color = color;
 	}
+	
+	//method that print all books in the node
+	public void printBooks()
+	{
+		for(int i=0 ; i< this.student.Books.length ; i++)
+		{
+			if(this.student.Books[i]!= null)
+			{
+				System.out.println(this.student.Books[i].bookName);
+			}
+		}
+	}
+	
+	
+	
 }

@@ -1,12 +1,5 @@
-/**
- * 
- */
 
-/**
- * @author Alexc007
- *
- */
-public class StudentManager 
+public class BookManager 
 {
 	public final static int RED = 1;
 	public final static int BLACK = 0;
@@ -16,7 +9,7 @@ public class StudentManager
 	public RBNode nullNode = new RBNode(null, null, null, null, null, BLACK); //both Person and Book fields will be Null on this variable
 	
 	//constructor
-	public StudentManager()
+	public BookManager()
 	{
 		root = nullNode;
 	}
@@ -24,7 +17,7 @@ public class StudentManager
 	//check if tree is empty
 	public boolean isEmpty()
 	{
-		if(root.student == null)
+		if(root.book == null)
 		{
 			return true;
 		}
@@ -32,86 +25,86 @@ public class StudentManager
 	}
 	
 	//insert to tree method
-	public void insert(RBNode newStudent)
+	public void insert(RBNode newBook)
 	{
 		RBNode temp1 = nullNode; // y <- null(T)
 		RBNode temp2 = root; //x <- root(T)
 		while(temp2 != temp1)
 		{
 			temp1 = temp2;
-			if(newStudent.student.getId() < temp2.student.getId()) //if (key[z] < key[x])
+			if(newBook.book.bookName.compareTo(temp2.book.bookName) <0) //if (key[z] < key[x])
 				temp2 = temp2.left; // x<- left[x]
 			else 
 				temp2 = temp2.right; // x<- right[x]
 		}
-		newStudent.parent = temp1; // p[z] <- y
+		newBook.parent = temp1; // p[z] <- y
 		if(temp1 == nullNode)
-			root = newStudent; //root[T] <- z
+			root = newBook; //root[T] <- z
 		else
 		{
-			if(newStudent.student.getId() < temp1.student.getId()) //if(key[z] < key[y])
+			if(newBook.book.bookName.compareTo(temp1.book.bookName) < 0) //if(key[z] < key[y])
 			{
-				temp1.left = newStudent; //left[y] <- z
+				temp1.left = newBook; //left[y] <- z
 			}
 			else
 			{
-				temp1.right = newStudent; // right[y] <- z
+				temp1.right = newBook; // right[y] <- z
 			}
 		}
-		newStudent.left = nullNode;
-		newStudent.right = nullNode;
-		newStudent.color = RED;
-		rbInsertFixup(root , newStudent);
+		newBook.left = nullNode;
+		newBook.right = nullNode;
+		newBook.color = RED;
+		rbInsertFixup(root , newBook);
 	}
 	
 	//fix-up after insert method
-	public void rbInsertFixup(RBNode root , RBNode newStudent)
+	public void rbInsertFixup(RBNode root , RBNode newBook)
 	{
 		RBNode temp; // this is "y"
-		while(newStudent.parent.color == RED)
+		while(newBook.parent.color == RED)
 		{
-			if(newStudent.parent == newStudent.parent.parent.left) //if(p[z] = left[p[p[z]]] - parent is a left son
+			if(newBook.parent == newBook.parent.parent.left) //if(p[z] = left[p[p[z]]] - parent is a left son
 			{
-				temp = newStudent.parent.parent.right; //y <- left[p[p[z]]]
+				temp = newBook.parent.parent.right; //y <- left[p[p[z]]]
 				if(temp.color == RED)
 				{
-					newStudent.parent.color = BLACK;        //case1
+					newBook.parent.color = BLACK;           //case1
 					temp.color = BLACK;                     //case1
-					newStudent.parent.parent.color = RED;   //case1
-					newStudent = newStudent.parent.parent;  //case1
+					newBook.parent.parent.color = RED;      //case1
+					newBook = newBook.parent.parent;        //case1
 				}
 				else
 				{
-					if(newStudent == newStudent.parent.right) //newStudent is right son
+					if(newBook == newBook.parent.right)    //newBook is right son
 					{
-						newStudent = newStudent.parent;    //case2
-						leftRotate(root , newStudent);     //case2
+						newBook = newBook.parent;          //case2
+						leftRotate(root , newBook);        //case2
 					}
-					newStudent.parent.color = BLACK;       //case3
-					newStudent.parent.parent.color = RED;  //case3
-					rightRotate(root , newStudent.parent.parent);  //case3
+					newBook.parent.color = BLACK;               //case3
+					newBook.parent.parent.color = RED;          //case3
+					rightRotate(root , newBook.parent.parent);  //case3
 				}
 			}
 			else
 			{
-				temp = newStudent.parent.parent.left;
+				temp = newBook.parent.parent.left;
 				if(temp.color == RED)
 				{
-					newStudent.parent.color = BLACK;              //case4
+					newBook.parent.color = BLACK;           //case4
 					temp.color = BLACK;                     //case4
-					newStudent.parent.parent.color = RED;   //case4
-					newStudent = newStudent.parent.parent;  //case4
+					newBook.parent.parent.color = RED;      //case4
+					newBook = newBook.parent.parent;        //case4
 				}
 				else
 				{
-					if(newStudent == newStudent.parent.left) //newStudent is left son
+					if(newBook == newBook.parent.left)      //newBook is left son
 					{
-						newStudent = newStudent.parent;     //case5
-						rightRotate(root , newStudent);     //case5
+						newBook = newBook.parent;           //case5
+						rightRotate(root , newBook);        //case5
 					}
-					newStudent.parent.color = BLACK;
-					newStudent.parent.parent.color = RED;
-					leftRotate(root , newStudent.parent.parent);
+					newBook.parent.color = BLACK;
+					newBook.parent.parent.color = RED;
+					leftRotate(root , newBook.parent.parent);
 				}
 				
 			}
@@ -121,16 +114,16 @@ public class StudentManager
 	
 	
 	//rb-delete method
-	public RBNode delete(RBNode root, RBNode studentRecord)
+	public RBNode delete(RBNode root, RBNode bookRecord)
 	{
 		RBNode tempY;
 		RBNode tempX;
-		if(studentRecord.left == nullNode || studentRecord.right == nullNode) //means there is 1 son to the node we want to delete
+		if(bookRecord.left == nullNode || bookRecord.right == nullNode) //means there is 1 son to the node we want to delete
 		{
-			tempY = studentRecord;
+			tempY = bookRecord;
 		}
 		else 
-			tempY = nodeSuccessor(studentRecord);
+			tempY = nodeSuccessor(bookRecord);
 		
 		if(tempY.left != nullNode)
 		{
@@ -156,9 +149,9 @@ public class StudentManager
 				tempY.parent.right = tempX;
 			}
 		}
-		if(tempY.student.getId() != studentRecord.student.getId())
+		if(tempY.book.bookName.compareTo(bookRecord.book.bookName) != 0) // name of temp1 != name of bookRecord
 		{
-			studentRecord.student.setID(tempY.student.getId());
+			bookRecord.book.bookName = tempY.book.bookName;
 		}
 		if(tempY.color == BLACK)
 		{
@@ -167,80 +160,80 @@ public class StudentManager
 		return tempY;
 	}
 	//leftRotate method
-	public void leftRotate(RBNode root , RBNode student)
+	public void leftRotate(RBNode root , RBNode book)
 	{
-		RBNode temp = student.right;
-		student.right = temp.left; //turn y's left subtree into x's right subtree
+		RBNode temp = book.right;
+		book.right = temp.left; //turn y's left subtree into x's right subtree
 		if(temp.left !=  nullNode)
 		{
-			temp.left.parent = student;
+			temp.left.parent = book;
 		}
-		temp.parent = student.parent; //link x's parent to y
-		if(student.parent == nullNode)
+		temp.parent = book.parent; //link x's parent to y
+		if(book.parent == nullNode)
 		{
 			root = temp;
 		}
 		else
 		{
-			if(student == student.parent.left)//x is left son
+			if(book == book.parent.left)//x is left son
 			{
-				student.parent.left = temp;
+				book.parent.left = temp;
 			}
 			else
 			{
-				student.parent.right = temp;
+				book.parent.right = temp;
 			}	
 		}
 		
-		temp.left = student; //put x on y's left
-		student.parent = temp;
+		temp.left = book; //put x on y's left
+		book.parent = temp;
 	}
 	
 	//right rotate method
-	public void rightRotate(RBNode root , RBNode student)
+	public void rightRotate(RBNode root , RBNode book)
 	{
-		RBNode temp = student.left;
-		student.left = temp.right; //turn y's left subtree into x's right subtree
+		RBNode temp = book.left;
+		book.left = temp.right; //turn y's left subtree into x's right subtree
 		if(temp.right !=  nullNode)
 		{
-			temp.right.parent = student;
+			temp.right.parent = book;
 		}
-		temp.parent = student.parent; //link x's parent to y
-		if(student.parent == nullNode)
+		temp.parent = book.parent; //link x's parent to y
+		if(book.parent == nullNode)
 		{
 			root = temp;
 		}
 		else
 		{
-			if(student == student.parent.right)//x is left son
+			if(book == book.parent.right)//x is left son
 			{
-				student.parent.right = temp;
+				book.parent.right = temp;
 			}
 			else
 			{
-				student.parent.left = temp;
+				book.parent.left = temp;
 			}	
 		}
 		
-		temp.right = student; //put x on y's left
-		student.parent = temp;
+		temp.right = book; //put x on y's left
+		book.parent = temp;
 	}
 	
 	//find successor method
-	public RBNode nodeSuccessor(RBNode student)
+	public RBNode nodeSuccessor(RBNode book)
 	{
 		RBNode temp1; //y
 		RBNode temp2; //x
-		if(student == nullNode)
+		if(book == nullNode)
 		{
 			return nullNode;
 		}
-		if(student.right != nullNode)
+		if(book.right != nullNode)
 		{
-			return findMinimum(student.right);
+			return findMinimum(book.right);
 		}
-		temp1 = student.parent;
-		temp2 = student;
+		temp1 = book.parent;
+		temp2 = book;
 		while(temp1 != nullNode && temp2 == temp1.right)
 		{
 			temp2 = temp1;
@@ -250,18 +243,18 @@ public class StudentManager
 	}
 	
 	//find Minimum method
-	private RBNode findMinimum(RBNode student)
+	private RBNode findMinimum(RBNode book)
 	{
-		RBNode min = student;
+		RBNode min = book;
 		while(min.left != nullNode)
 		{
 			min = min.left;
 		}
 		return min;
 	}
-	
+	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 	//rb-deleteFixup method
-	private void deleteFixup(RBNode root , RBNode student)
+	private void deleteFixup(RBNode root , RBNode book)
 	{
 		RBNode temp;
 		while(student != root && student.color == BLACK)
@@ -364,5 +357,4 @@ public class StudentManager
 	{
 		this.delete(root, search(root, id));
 	}
-		
 }
