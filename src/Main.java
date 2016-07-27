@@ -27,7 +27,7 @@ public class Main
 				if(Input.isInteger(splittedInput[1])== true) //means that its a query to look for Person ID and which books does he hold **case 1 on query Maman**
 				{
 					id = Integer.parseInt(splittedInput[1]); //convert the ID that is represented as string into integer
-					result = studentRecords.search(studentRecords.root , id);   //now look for it in tree
+					result = studentRecords.searchPerson(studentRecords.root , id);   //now look for it in tree
 					result.printBooks(); //print all the books in result RBNode
 				}
 				else 

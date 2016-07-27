@@ -257,22 +257,22 @@ public class BookManager
 	private void deleteFixup(RBNode root , RBNode book)
 	{
 		RBNode temp;
-		while(student != root && student.color == BLACK)
+		while(book != root && book.color == BLACK)
 		{
-			if(student == student.parent.left)//student is a left son
+			if(book == book.parent.left)//book is a left son
 			{
-				temp = student.parent.right; //temp gets student's brother
+				temp = book.parent.right; //temp gets book's brother
 				if(temp.color == RED) //student's brother is red
 				{
 					temp.color = BLACK;                //case1
-					student.parent.color = RED;        //case1
-					leftRotate(root, student.parent);  //case1
-					temp = student.parent.right;       //case1
+					book.parent.color = RED;           //case1
+					leftRotate(root, book.parent);     //case1
+					temp = book.parent.right;          //case1
 				}
 				if(temp.left.color == BLACK && temp.right.color == BLACK)
 				{
-					temp.color = RED;                 //case2
-					student = student.parent;          //case2
+					temp.color = RED;                  //case2
+					book = book.parent;                //case2
 				}
 				else
 				{
@@ -281,29 +281,29 @@ public class BookManager
 						temp.left.color = BLACK;       //case3
 						temp.color = RED;              //case3
 						rightRotate(root, temp);       //case3
-						temp = student.parent.right;   //case3
+						temp = book.parent.right;      //case3
 					}
-					temp.color = student.parent.color; //case4
-					student.parent.color = BLACK;      //case4
+					temp.color = book.parent.color;    //case4
+					book.parent.color = BLACK;         //case4
 					temp.right.color = BLACK;          //case4
-					leftRotate(root, student.parent);  //case4
-					student = root;                    //case4
+					leftRotate(root, book.parent);     //case4
+					book = root;                       //case4
 				}
 			}
 			else
 			{
-				temp = student.parent.left; //temp gets student's brother
-				if(temp.color == RED) //student's brother is red
+				temp = book.parent.left; //temp gets book's brother
+				if(temp.color == RED)    //books's brother is red
 				{
 					temp.color = BLACK;                //case1
-					student.parent.color = RED;        //case1
-					rightRotate(root, student.parent);  //case1
-					temp = student.parent.left;       //case1
+					book.parent.color = RED;           //case1
+					rightRotate(root, book.parent);    //case1
+					temp = book.parent.left;           //case1
 				}
 				if(temp.right.color == BLACK && temp.left.color == BLACK)
 				{
 					temp.color = RED;                 //case2
-					student = student.parent;         //case2
+					book = book.parent;               //case2
 				}
 				else
 				{
@@ -312,49 +312,49 @@ public class BookManager
 						temp.right.color = BLACK;       //case3
 						temp.color = RED;               //case3
 						leftRotate(root, temp);         //case3
-						temp = student.parent.left;     //case3
+						temp = book.parent.left;        //case3
 					}
-					temp.color = student.parent.color;  //case4
-					student.parent.color = BLACK;       //case4
+					temp.color = book.parent.color;     //case4
+					book.parent.color = BLACK;          //case4
 					temp.left.color = BLACK;            //case4
-					rightRotate(root, student.parent);  //case4
-					student = root;                     //case4
+					rightRotate(root, book.parent);     //case4
+					book = root;                     //case4
 				}
 			}
 		}
-		student.color = BLACK;
+		book.color = BLACK;
 	}
-	//rbSearch method
-	public RBNode search(RBNode root , int id)
+	//rbSearchBook method
+	public RBNode searchBook(RBNode root , String bookName)
 	{
 		if(root == nullNode)
 		{
 			return nullNode;
 		}
-		if(root.student.getId() == id) //found the value we were looking for
+		if(root.book.bookName.equals(bookName)) //found the book we were looking for
 		{
 			return root;
 		}
-		if(root.student.getId() > id) // value on root is larger than ID - we go left
+		if(root.book.bookName.compareTo(bookName)> 0) // book name on root is larger than bookName - we go left
 		{
-			return search(root.left , id);
+			return searchBook(root.left , bookName);
 		}
-		else //value on root is smaller than ID - we go right
+		else //book name on root is smaller than bookName - we go right
 		{
-			return search(root.right , id);
+			return searchBook(root.right , bookName);
 		}
 	}
 	
-	//add person to records method
-	public void addPerToRec(int id , String name)
+	//add book to records method
+	public void addBookToRec(Person owner , String bookName)
 	{
-		Person tempStudent = new Person(id, name);
-		RBNode toInsert = new RBNode(tempStudent, null, nullNode, nullNode, nullNode, RED);
+		Book newBook = new Book(bookName, owner);
+		RBNode toInsert = new RBNode(null, newBook, nullNode, nullNode, nullNode, RED);
 		this.insert(toInsert);
 	}
 	//remove student from records method
-	public void remPerFromRec(int id)
+	public void remBookFromRec(String bookName)
 	{
-		this.delete(root, search(root, id));
+		this.delete(root, searchBook(root, bookName));
 	}
 }

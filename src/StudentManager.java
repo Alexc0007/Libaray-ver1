@@ -331,8 +331,8 @@ public class StudentManager
 		}
 		student.color = BLACK;
 	}
-	//rbSearch method
-	public RBNode search(RBNode root , int id)
+	//rbSearchPerson method
+	public RBNode searchPerson(RBNode root , int id)
 	{
 		if(root == nullNode)
 		{
@@ -344,11 +344,11 @@ public class StudentManager
 		}
 		if(root.student.getId() > id) // value on root is larger than ID - we go left
 		{
-			return search(root.left , id);
+			return searchPerson(root.left , id);
 		}
 		else //value on root is smaller than ID - we go right
 		{
-			return search(root.right , id);
+			return searchPerson(root.right , id);
 		}
 	}
 	
@@ -362,7 +362,7 @@ public class StudentManager
 	//remove student from records method
 	public void remPerFromRec(int id)
 	{
-		this.delete(root, search(root, id));
+		this.delete(root, searchPerson(root, id));
 	}
 		
 }
