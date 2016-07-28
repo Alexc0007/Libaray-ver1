@@ -40,7 +40,7 @@ public class Main
 					else // means that its a query to look for a book name and which person holds it (splittedInput[1] is the bookName)
 					{
 						result = bookRecords.searchBook(bookRecords.root,splittedInput[1]); //find the book in the book rbTree
-						System.out.println(result.book.holder.getId() +"-"+ result.book.holder.getLastName()); //print the holders id and last name
+						System.out.println(result.book.holder.getId() +"-"+ result.book.holder.getLastName());  //print the holders id and last name
 					}
 				}
 				break;

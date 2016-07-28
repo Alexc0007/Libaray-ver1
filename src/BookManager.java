@@ -252,7 +252,7 @@ public class BookManager
 		}
 		return min;
 	}
-	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+	
 	//rb-deleteFixup method
 	private void deleteFixup(RBNode root , RBNode book)
 	{

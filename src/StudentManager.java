@@ -84,11 +84,11 @@ public class StudentManager
 				{
 					if(newStudent == newStudent.parent.right) //newStudent is right son
 					{
-						newStudent = newStudent.parent;    //case2
-						leftRotate(root , newStudent);     //case2
+						newStudent = newStudent.parent;     //case2
+						leftRotate(root , newStudent);      //case2
 					}
-					newStudent.parent.color = BLACK;       //case3
-					newStudent.parent.parent.color = RED;  //case3
+					newStudent.parent.color = BLACK;        //case3
+					newStudent.parent.parent.color = RED;   //case3
 					rightRotate(root , newStudent.parent.parent);  //case3
 				}
 			}
