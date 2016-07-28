@@ -12,7 +12,6 @@ public class Main
 	public static void main(String[] args)
 	{
 		int id;
-		String bName;
 		String input;
 		RBNode result;
 		StudentManager studentRecords = new StudentManager();
@@ -63,7 +62,7 @@ public class Main
 				{
 					id = Integer.parseInt(splittedInput[1]); //convert the ID that is represented as string into integer
 					result = studentRecords.searchPerson(studentRecords.root, id); //find the student on student records
-					result.addBookToStudent(splittedInput[3], bookRecords);
+					result.addBookToStudent(splittedInput[2], bookRecords);
 					
 				}
 				else //means that a person is retrieving a book **Maman case 2**
@@ -76,6 +75,7 @@ public class Main
 			}
 			
 			System.out.println("please insert input command:");
+			input = scan.nextLine();
 		}
 		
 		

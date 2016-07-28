@@ -29,7 +29,7 @@ public class BookManager
 	{
 		RBNode temp1 = nullNode; // y <- null(T)
 		RBNode temp2 = root; //x <- root(T)
-		while(temp2 != temp1)
+		while(temp2 != nullNode)
 		{
 			temp1 = temp2;
 			if(newBook.book.bookName.compareTo(temp2.book.bookName) <0) //if (key[z] < key[x])

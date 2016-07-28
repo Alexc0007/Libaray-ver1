@@ -36,7 +36,7 @@ public class StudentManager
 	{
 		RBNode temp1 = nullNode; // y <- null(T)
 		RBNode temp2 = root; //x <- root(T)
-		while(temp2 != temp1)
+		while(temp2 != nullNode)
 		{
 			temp1 = temp2;
 			if(newStudent.student.getId() < temp2.student.getId()) //if (key[z] < key[x])

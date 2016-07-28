@@ -74,6 +74,7 @@ public class RBNode
 			if(this.student.Books[i].equals(bookName))
 			{
 				this.student.Books[i] = null; //erase book from students books array
+				this.student.nofBooks--;
 				toDelete = bookRecords.searchBook(bookRecords.root, bookName);
 				bookRecords.delete(bookRecords.root, toDelete);
 				System.out.println("book "+ bookName + " was retrieved by: "+this.student.getId()); //print a message that book has been retrieved
