@@ -56,7 +56,8 @@ public class RBNode
 					this.student.Books[i] = new Book(bookName, this.student); //add book into books array
 					this.student.nofBooks++;
 					bookRecords.addBookToRec(this.student.Books[i]);
-					System.out.println("book "+this.student.Books[i].bookName+"borrowed by "+this.student.getId()); //print who borrowed which book
+					System.out.println("book "+this.student.Books[i].bookName+" borrowed by "+this.student.getId()); //print who borrowed which book
+					break;
 				}
 				if(i==this.student.Books.length-1)//means that array of books is full and student cant borrow more books
 				{
