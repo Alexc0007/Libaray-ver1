@@ -12,9 +12,11 @@ public class Main
 	public static void main(String[] args)
 	{
 		int id;
+		String bName;
 		String input;
 		RBNode result;
 		StudentManager studentRecords = new StudentManager();
+		BookManager bookRecords = new BookManager();
 		Scanner scan = new Scanner(System.in); //scanner object to read the input
 		System.out.println("please insert input command:");
 		input = scan.nextLine();
@@ -36,9 +38,10 @@ public class Main
 					{
 						
 					}
-					else // means that its a query to look for a book name and which person holds it
+					else // means that its a query to look for a book name and which person holds it (splittedInput[1] is the bookName)
 					{
-						
+						result = bookRecords.searchBook(bookRecords.root,splittedInput[1]); //find the book in the book rbTree
+						System.out.println(result.book.holder.getId() +"-"+ result.book.holder.getLastName()); //print the holders id and last name
 					}
 				}
 				break;
@@ -56,6 +59,19 @@ public class Main
 				
 			
 			default: //means there is a name on the first "word" of input
+				if(splittedInput[3].equals(ADD)) //means a person is borrowing a book **Maman case 1**
+				{
+					id = Integer.parseInt(splittedInput[1]); //convert the ID that is represented as string into integer
+					result = studentRecords.searchPerson(studentRecords.root, id); //find the student on student records
+					result.addBookToStudent(splittedInput[3], bookRecords);
+					
+				}
+				else //means that a person is retrieving a book **Maman case 2**
+				{
+					id = Integer.parseInt(splittedInput[1]); //convert the ID that is represented as string into integer
+					result = studentRecords.searchPerson(studentRecords.root, id); //find the student on student records
+					result.remBookFromStudent(splittedInput[2], bookRecords);
+				}
 				break;
 			}
 			
@@ -66,3 +82,6 @@ public class Main
 	}
 
 }
+
+
+

@@ -358,11 +358,13 @@ public class StudentManager
 		Person tempStudent = new Person(id, name);
 		RBNode toInsert = new RBNode(tempStudent, null, nullNode, nullNode, nullNode, RED);
 		this.insert(toInsert);
+		System.out.println("student "+ id +" added to Library records");
 	}
 	//remove student from records method
 	public void remPerFromRec(int id)
 	{
 		this.delete(root, searchPerson(root, id));
+		System.out.println("student "+ id + "removed from Library records");
 	}
 		
 }

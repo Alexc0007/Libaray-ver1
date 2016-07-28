@@ -346,9 +346,8 @@ public class BookManager
 	}
 	
 	//add book to records method
-	public void addBookToRec(Person owner , String bookName)
+	public void addBookToRec(Book newBook)
 	{
-		Book newBook = new Book(bookName, owner);
 		RBNode toInsert = new RBNode(null, newBook, nullNode, nullNode, nullNode, RED);
 		this.insert(toInsert);
 	}
