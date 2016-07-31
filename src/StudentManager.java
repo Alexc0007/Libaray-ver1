@@ -158,7 +158,11 @@ public class StudentManager
 		}
 		if(tempY.student.getId() != studentRecord.student.getId())
 		{
+			//copy all student node data
+			studentRecord.student.setLname(tempY.student.getLastName());
+			studentRecord.student.Books = tempY.student.Books;
 			studentRecord.student.setID(tempY.student.getId());
+			studentRecord.student.nofBooks = tempY.student.nofBooks;
 		}
 		if(tempY.color == BLACK)
 		{
@@ -363,8 +367,18 @@ public class StudentManager
 	//remove student from records method
 	public void remPerFromRec(int id)
 	{
+		RBNode toRemove = searchPerson(root, id);
+		//check that student returned all his books before removing account
+		for(int i=0; i<toRemove.student.Books.length ; i++)
+		{
+			if(toRemove.student.Books[i]!= null)
+			{
+				System.out.println("cant remove "+id+" from the records - he still has books to retrieve on his account");
+				return;
+			}
+		}
 		this.delete(root, searchPerson(root, id));
-		System.out.println("student "+ id + "removed from Library records");
+		System.out.println("student "+ id + " removed from Library records");
 	}
 		
 }
