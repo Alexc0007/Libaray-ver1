@@ -187,6 +187,7 @@ public class BookManager
 		
 		temp.left = book; //put x on y's left
 		book.parent = temp;
+		this.root = root;
 	}
 	
 	//right rotate method
@@ -217,6 +218,7 @@ public class BookManager
 		
 		temp.right = book; //put x on y's left
 		book.parent = temp;
+		this.root = root;
 	}
 	
 	//find successor method
@@ -269,7 +271,7 @@ public class BookManager
 					leftRotate(root, book.parent);     //case1
 					temp = book.parent.right;          //case1
 				}
-				if(temp.left.color == BLACK && temp.right.color == BLACK)
+				if((temp.left == null && temp.left == null) ||(temp.left.color == BLACK && temp.left.color == BLACK))
 				{
 					temp.color = RED;                  //case2
 					book = book.parent;                //case2
@@ -300,7 +302,7 @@ public class BookManager
 					rightRotate(root, book.parent);    //case1
 					temp = book.parent.left;           //case1
 				}
-				if(temp.right.color == BLACK && temp.left.color == BLACK)
+				if((temp.right == null && temp.left == null) ||(temp.right.color == BLACK && temp.left.color == BLACK))
 				{
 					temp.color = RED;                 //case2
 					book = book.parent;               //case2

@@ -198,13 +198,14 @@ public class StudentManager
 		
 		temp.left = student; //put x on y's left
 		student.parent = temp;
+		this.root = root;
 	}
 	
 	//right rotate method
 	public void rightRotate(RBNode root , RBNode student)
 	{
 		RBNode temp = student.left;
-		student.left = temp.right; //turn y's left subtree into x's right subtree
+		student.left = temp.right; //turn y's right subtree into x's left subtree
 		if(temp.right !=  nullNode)
 		{
 			temp.right.parent = student;
@@ -228,6 +229,7 @@ public class StudentManager
 		
 		temp.right = student; //put x on y's left
 		student.parent = temp;
+		this.root = root;
 	}
 	
 	//find successor method
@@ -280,7 +282,7 @@ public class StudentManager
 					leftRotate(root, student.parent);  //case1
 					temp = student.parent.right;       //case1
 				}
-				if(temp.left.color == BLACK && temp.right.color == BLACK)
+				if((temp.left == null && temp.left == null) ||(temp.left.color == BLACK && temp.left.color == BLACK))
 				{
 					temp.color = RED;                 //case2
 					student = student.parent;          //case2
@@ -311,7 +313,7 @@ public class StudentManager
 					rightRotate(root, student.parent);  //case1
 					temp = student.parent.left;       //case1
 				}
-				if(temp.right.color == BLACK && temp.left.color == BLACK)
+				if((temp.right == null && temp.left == null) ||(temp.right.color == BLACK && temp.left.color == BLACK))
 				{
 					temp.color = RED;                 //case2
 					student = student.parent;         //case2

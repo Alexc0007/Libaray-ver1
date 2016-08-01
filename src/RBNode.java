@@ -31,12 +31,18 @@ public class RBNode
 	//method that print all books in the node
 	public void printBooks()
 	{
+		int flag =0;
 		for(int i=0 ; i< this.student.Books.length ; i++)
 		{
 			if(this.student.Books[i]!= null)
 			{
 				System.out.println(this.student.Books[i].bookName);
+				flag++;
 			}
+		}
+		if(flag == 0)
+		{
+			System.out.println("student has no books");
 		}
 	}
 	
@@ -70,9 +76,9 @@ public class RBNode
 	{
 		int i;
 		RBNode toDelete;
-		for(i=0 ; i<this.student.Books.length; i++) //loot to go over books array of that student and find the book we want to delete
+		for(i=0 ; i<this.student.Books.length; i++) //loop to go over books array of that student and find the book we want to delete
 		{
-			if(this.student.Books[i].equals(bookName))
+			if(this.student.Books[i] != null && this.student.Books[i].bookName.equals(bookName))
 			{
 				this.student.Books[i] = null; //erase book from students books array
 				this.student.nofBooks--;
