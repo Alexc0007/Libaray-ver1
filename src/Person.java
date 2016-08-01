@@ -16,6 +16,7 @@ public class Person
 	private String lastName;  //stores this person's Last Name
 	public Book[] Books = new Book[10]; //store this person's list of books
 	public int nofBooks;
+	public TreeNode heapNode;
 	
 	//constructor
 	public Person(int personID , String PersonlastName)
@@ -23,6 +24,7 @@ public class Person
 		id = personID;
 		lastName = PersonlastName;
 		nofBooks = 0; //set initial number of books to 0
+		heapNode = null;
 	}
 	
 	/*

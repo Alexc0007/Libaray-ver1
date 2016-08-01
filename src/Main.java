@@ -16,6 +16,7 @@ public class Main
 		RBNode result;
 		StudentManager studentRecords = new StudentManager();
 		BookManager bookRecords = new BookManager();
+		MaxHeap heap = new MaxHeap();
 		Scanner scan = new Scanner(System.in); //scanner object to read the input
 		System.out.println("please insert input command:");
 		input = scan.nextLine();
@@ -35,7 +36,7 @@ public class Main
 				{
 					if(splittedInput[1].equals("!")) //need to find the students that hold the biggest number of books
 					{
-						
+						heap.printTree(); //print students that have maximum amount of books
 					}
 					else // means that its a query to look for a book name and which person holds it (splittedInput[1] is the bookName)
 					{
@@ -47,7 +48,7 @@ public class Main
 			case ADD:  //add record input **case 3 on Maman Book**
 				String name = splittedInput[1];
 				id = Integer.parseInt(splittedInput[2]);
-				studentRecords.addPerToRec(id , name);
+				studentRecords.addPerToRec(id , name, heap);
 				break;
 			
 			case REM: //remove record input  **case 4 on Maman Book**
@@ -62,14 +63,14 @@ public class Main
 				{
 					id = Integer.parseInt(splittedInput[1]); //convert the ID that is represented as string into integer
 					result = studentRecords.searchPerson(studentRecords.root, id); //find the student on student records
-					result.addBookToStudent(splittedInput[2], bookRecords);
+					result.addBookToStudent(splittedInput[2], bookRecords , heap);
 					
 				}
 				else //means that a person is retrieving a book **Maman case 2**
 				{
 					id = Integer.parseInt(splittedInput[1]); //convert the ID that is represented as string into integer
 					result = studentRecords.searchPerson(studentRecords.root, id); //find the student on student records
-					result.remBookFromStudent(splittedInput[2], bookRecords);
+					result.remBookFromStudent(splittedInput[2], bookRecords , heap);
 				}
 				break;
 			}

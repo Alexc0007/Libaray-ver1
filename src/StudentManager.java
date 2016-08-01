@@ -359,11 +359,12 @@ public class StudentManager
 	}
 	
 	//add person to records method
-	public void addPerToRec(int id , String name)
+	public void addPerToRec(int id , String name , MaxHeap heap)
 	{
 		Person tempStudent = new Person(id, name);
 		RBNode toInsert = new RBNode(tempStudent, null, nullNode, nullNode, nullNode, RED);
 		this.insert(toInsert);
+		heap.insertVal(tempStudent);
 		System.out.println("student "+ id +" added to Library records");
 	}
 	//remove student from records method
