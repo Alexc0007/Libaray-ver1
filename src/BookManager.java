@@ -1,4 +1,9 @@
-
+/**
+ * @author Alex Cherniak
+ *this class represents a Red Black Tree that will hold information about all the borrowed books
+ *in the library
+ *its built out of RBNode objects
+ */
 public class BookManager 
 {
 	public final static int RED = 1;

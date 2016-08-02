@@ -1,5 +1,10 @@
+/**
+ * @author Alex Cherniak
+ *this class is the main interface of the library
+ *it runs in an infinite loop until the "exit" word is inserted as input
+ */
 import java.util.Scanner;
-import java.util.*;
+
 
 
 public class Main 
@@ -78,10 +83,7 @@ public class Main
 			System.out.println("please insert input command:");
 			input = scan.nextLine();
 		}
-		
-		
 	}
-
 }
 
 

@@ -1,4 +1,8 @@
-
+/**
+ * @author Alex Cherniak
+ *this class contains functions that help us process the input - turns out there is only one :D
+ */
+//is integer method - checks if string is an integer
 public class Input 
 {
 	public static boolean isInteger(String input)

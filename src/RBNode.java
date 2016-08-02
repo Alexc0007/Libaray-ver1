@@ -1,10 +1,7 @@
 /**
- * 
- */
-
-/**
  * @author Alexc007
- *
+ *this class represents a node that is part of a Red Black Tree , such node can contain information about
+ *a Person(an object that is representing a student) or a Book(an object that is representing a book)
  */
 public class RBNode
 {

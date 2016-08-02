@@ -1,11 +1,9 @@
-/**
- * 
- */
 
 /**
  * @author Alexc007
  *
- *	 this class represents a book in the library , representation is by book name(code) and has an extra field to represent the book holder
+ *this class represents a book in the library 
+ *representation is by book name(code) and has an extra field to represent the book holder
  */
 public class Book 
 {

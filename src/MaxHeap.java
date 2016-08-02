@@ -1,40 +1,39 @@
+/**
+ * @author Alex Cherniak
+ *this class represents a Max Heap , that will allow us to access the student with maximum amount of
+ *books out of all the library students
+ *its built out of Treenodes
+ */
 import java.util.*;
-
-import java.lang.Math;
-
 
 
 public class MaxHeap
 {
-
+	//instance variables
     private TreeNode root;
     private int nodeCount;
     private int currentLevel;
-   
-
-    
-
+  
+    //constructor
     public MaxHeap()
-
     {
         root= null;
         nodeCount=0;
         currentLevel=0;
     }
 
-    
-
-	public void swap(TreeNode t1, TreeNode t2)
-	{
-	    TreeNode tempTree = t1;
-	    t1 = t2;
-	    t2 = tempTree;  
-	}
+    //swap method
+    public void swap(TreeNode t1, TreeNode t2)
+    {
+        Person tempS = t1.getStudent();
+        t1.setStudent(t2.getStudent());
+        t2.setStudent(tempS);
+    }
 	
+	//ipow method
 	private int ipow(int base, int exp)
 	{
 	    int result = 1;
-	
 	    while (exp > 0)
 	    {
 	        if ((exp & 1) != 0)
@@ -46,7 +45,7 @@ public class MaxHeap
 	}
 	
 	    
-	
+	//insert value method
 	public void insertVal(Person student)
 	{
 	    int mask=0;
@@ -109,6 +108,7 @@ public class MaxHeap
 	       }
 	}
 	
+	//heapify method
 	public void maxHeapify(TreeNode p)
 	{
 	    if (p.isLeaf()==0)
@@ -136,7 +136,7 @@ public class MaxHeap
 	}
 	
 	    
-	
+	//heapify recursive method
 	public void maxHeapRec( TreeNode p)
 	{
 	    if((p==null)||(p.isLeaf()==1))
@@ -150,6 +150,7 @@ public class MaxHeap
 	{
 	    maxHeapRec(root);
 	}   
+	//print students that has max amount of books method
 	public void printTree()
 	{
 	    TreeNode p = root;
@@ -175,8 +176,10 @@ public class MaxHeap
 	        thisLevel = nextLevel;
 	    }
 	}
+	//getRoot method
 	public TreeNode getRoot()
 	{
 		return root;
 	}
+	
 }

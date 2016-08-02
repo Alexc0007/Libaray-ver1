@@ -1,10 +1,9 @@
-/**
- * 
- */
 
 /**
- * @author Alexc007
- *
+ * @author Alex Cherniak
+ *this class represents an RB Tree that will contain RBNodes(Red Black Nodes) of information about the students
+ *and will allow us to perform all the needed query's that involve searching a student
+ *and all the operation of inserting a new student record to the library or removing one
  */
 public class StudentManager 
 {
